@@ -35,6 +35,8 @@ namespace Oculus.Interaction
         [SerializeField]
         private int _maxGrabPoints = -1;
 
+        public bool hasGravity;
+
         public int MaxGrabPoints
         {
             get
@@ -90,6 +92,21 @@ namespace Oculus.Interaction
             this.EndStart(ref _started);
         }
 
+        public void startGravity()
+        {
+            if (hasGravity)
+            {
+                this.GetComponent<Rigidbody>().isKinematic = false;
+                this.GetComponent<Rigidbody>().useGravity = true;
+            }
+        }
+
+        public void stopGravity()
+        {
+            this.GetComponent<Rigidbody>().isKinematic = true;
+            this.GetComponent<Rigidbody>().useGravity = false;
+        }
+
         public override void ProcessPointerEvent(PointerEvent evt)
         {
             switch (evt.Type)
@@ -125,6 +142,7 @@ namespace Oculus.Interaction
         // current transform data
         private void BeginTransform()
         {
+
             // End the transform on any existing transformer before we
             // begin the new one
             EndTransform();
