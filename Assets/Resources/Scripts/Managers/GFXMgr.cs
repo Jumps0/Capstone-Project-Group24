@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SFXMgr : MonoBehaviour
+public class GFXMgr : MonoBehaviour
 {
 
-    public static SFXMgr inst;
+    public static GFXMgr inst;
     public void Awake()
     {
         inst = this;
